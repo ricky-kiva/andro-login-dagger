@@ -1,7 +1,12 @@
 package com.dicoding.mysimplelogin
 
-class UserRepository(private val sesi: SessionManager) {
+import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
+class UserRepository @Inject constructor(private val sesi: SessionManager) { // inject constructor using Dagger
+
+    /* Dagger `@Singleton` provides automatic singleton
     companion object {
         @Volatile
         private var instance: UserRepository? = null
@@ -10,7 +15,7 @@ class UserRepository(private val sesi: SessionManager) {
             instance ?: synchronized(this) {
                 instance ?: UserRepository(sesi)
             }
-    }
+    }*/
 
     fun loginUser(username: String) {
         sesi.createLoginSession()
